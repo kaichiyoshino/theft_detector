@@ -1,0 +1,8 @@
+services:
+  theft_detector:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/app
+    tty: true

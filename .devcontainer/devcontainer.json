@@ -1,0 +1,11 @@
+{
+  "name": "Python 3",
+  "dockerComposeFile": "compose.yaml",
+  "service": "theft_detector",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

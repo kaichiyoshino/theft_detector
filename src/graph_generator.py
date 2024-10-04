@@ -1,23 +1,33 @@
 #%%
-from data import DataReader
 from pathlib import Path
 import numpy as np
+import polars as pl
 import matplotlib.pyplot as plt 
+from data import generate_data
+from datetime import datetime
 
-class GraphGenerator:
-    def __init__(self, path):
-        self.reader = DataReader(path)
-        self.df = self.reader.get_data()
+# data_instance = generate_data(100, 100, 0.2, 10)
+# y = data_instance.data.select(pl.col('I1')).to_numpy().flatten()
+# x = np.array([i + 1 for i in range(len(y))])
 
-    def plot(self, house_number):
-        fig = plt.figure(figsize=(10, 5))
-        ax = fig.add_subplot(1, 1, 1)
-        x = np.array(self.df[house_number, 1: ])
-        y = np.arange(0, len(x[0]))
-        ax.plot(y, x[0], c='g', label='Electricity consumption', marker='o')
-        ax.set_xlabel('Day')
-        ax.set_ylabel('Electricity consumption[kWh]')
-        ax.grid()
 
-ins = GraphGenerator('../datasets/electricity_theft_data.csv')  
-ins.plot(100)
+# fig = plt.figure()
+# ax = fig.add_subplot(111)
+# ax.plot(x, y, marker="o")
+# ax.grid()
+# ax.set_xlabel('Time')
+# ax.set_ylabel('I [A]')
+#%%
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
+data_path = Path("../datasets/AEP_hourly.csv")
+df = pl.read_csv(data_path)
+y = df.select(pl.col('AEP_MW')).to_numpy().flatten()[:24]
+x = np.array([i + 1 for i in range(len(y))])
+ax.grid()
+ax.set_xlabel('Total Energy Consumption [MWh]')
+ax.set_ylabel('Time [hour]')
+ax.plot(x, y, marker="o", color="#ff7f0e")
+
+# %%

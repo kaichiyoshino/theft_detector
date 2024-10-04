@@ -1,0 +1,33 @@
+appliances:
+
+  refregerator:
+    small:
+      name: "Small Refregerator"
+      hourly_power: 0.416
+    medium:
+      name: "Medium Refregerator"
+      hourly_power: 0.0405
+    large:
+      name: "Large Refregerator"
+      hourly_power: 0.0285
+
+  air_conditioner:
+    RAS_ZJ22R:
+      hourly_power: 0.43
+      energy_consumption: 612
+    RAS_ZJ36R:
+      hourly_power: 0.89
+      energy_consumption: 1174
+    RAS_ZJ63R:
+      hourly_power: 1.70
+      energy_consumption: 1953
+
+  dryer:
+    IB-P801:
+      hourly_power: 1.2
+      secondary_power: 0.000333
+
+  washing_machine:
+  dish_washer:
+  oven:
+  microwave:
